@@ -56,7 +56,7 @@ app.layout = html.Div(children=[
 @app.callback(Output('figure-1', 'figure'),
              [Input('column-options', 'value')])
 def draw_map(mycolumn):
-    mygraphtitle = f'State wise distribution of {mycolumn} income in Millions USD in 2011'
+    mygraphtitle = f'State wise distribution of income from {mycolumn} (in Millions USD) for 2011'
     mycolorscale = 'bluyl' # Note: The error message will list possible color scales.
     mycolorbartitle = "Millions USD"
     
