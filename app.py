@@ -11,7 +11,9 @@ import pandas as pd
 list_of_columns =['code', 'state', 'category', 'total exports', 'beef', 'pork', 'poultry',
        'dairy', 'fruits fresh', 'fruits proc', 'total fruits', 'veggies fresh',
        'veggies proc', 'total veggies', 'corn', 'wheat', 'cotton']
-
+list_of_products =['code', 'state', 'category', 'total exports', 'beef', 'pork', 'poultry',
+       'dairy', 'fruits fresh', 'fruits proc', 'total fruits', 'veggies fresh',
+       'veggies proc', 'total veggies', 'corn', 'wheat', 'cotton']
 mycolumn='corn'
 myheading1 = f"Lesson4 - Draw with plotly"
 mygraphtitle = '2011 US Agriculture Exports by State'
@@ -43,12 +45,12 @@ app.layout = html.Div(children=[
         dcc.Dropdown(
             id='column-options',
             options=[
-                {'label':list_of_columns[0], 'value':list_of_columns[0]},
-                {'label':list_of_columns[1], 'value':list_of_columns[1]},
-                {'label':list_of_columns[2], 'value':list_of_columns[2]},
-                {'label':list_of_columns[3], 'value':list_of_columns[3]},
+                {'label':list_of_columns[0], 'value':list_of_products[0]},
+                {'label':list_of_columns[1], 'value':list_of_products[1]},
+                {'label':list_of_columns[2], 'value':list_of_products[2]},
+                {'label':list_of_columns[3], 'value':list_of_products[3]},
                 ],
-            value=list_of_columns[0],
+            value=list_of_products[0],
         ),
       ],className='two columns'),
       html.Div([dcc.Graph(id='figure-1'),
@@ -64,10 +66,14 @@ app.layout = html.Div(children=[
 @app.callback(Output('figure-1', 'figure'),
              [Input('column-options', 'value')])
 def draw_map(mycolumn):
+    mygraphtitle = f'Exports of {mycolumn} in 2011'
+    mycolorscale = 'ylorrd' # Note: The error message will list possible color scales.
+    mycolorbartitle = "Millions USD"
+    
     fig = go.Figure(data=go.Choropleth(
       locations=df['code'], # Spatial coordinates
-      z = df[mycolumn].astype(float), # Data to be color-coded
       locationmode = 'USA-states', # set of locations match entries in `locations`
+      z = df[mycolumn].astype(float), # Data to be color-coded
       colorscale = mycolorscale,
       colorbar_title = mycolorbartitle,
     ))
@@ -79,6 +85,7 @@ def draw_map(mycolumn):
       height=800
     )
     return fig
+
 
 ############ Deploy
 if __name__ == '__main__':
