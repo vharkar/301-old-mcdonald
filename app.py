@@ -57,7 +57,7 @@ app.layout = html.Div(children=[
              [Input('column-options', 'value')])
 def draw_map(mycolumn):
     mygraphtitle = f'State wise distribution of {mycolumn} income in Millions USD in 2011'
-    mycolorscale = 'aggrnyl' # Note: The error message will list possible color scales.
+    mycolorscale = 'bluyl' # Note: The error message will list possible color scales.
     mycolorbartitle = "Millions USD"
     
     fig = go.Figure(data=go.Choropleth(
