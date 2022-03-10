@@ -9,9 +9,9 @@ import pandas as pd
 ########### Define your variables ######
 
 # here's the list of possible columns to choose from.
-list_of_columns =['beef', 'pork', 'poultry',
-       'dairy', 'fruits fresh', 'fruits proc', 'total fruits', 'veggies fresh',
-       'veggies proc', 'total veggies', 'corn', 'wheat', 'cotton', 'total exports']
+list_of_columns =['Tree nuts', 'Rice', 'Feeds',
+       'Dairy', 'Fresh fruit', 'Processed fruit', 'Fresh vegetables',
+       'Processed vegetables', 'Soybeans', 'Corn', 'Wheat', 'Cotton', 'Total exports']
 
 myheading1 = "Lesson4 - Draw with plotly"
 tabtitle = 'Plotly Map from US Agriculture'
@@ -22,7 +22,7 @@ githublink = 'https://github.com/vharkar/301-old-mcdonald'
 ########## Set up the chart
 
 import pandas as pd
-df = pd.read_csv('assets/usa-2011-agriculture.csv')
+df = pd.read_csv('assets/usa-2020-agriculture.csv')
 
 ########### Initiate the app
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -56,7 +56,7 @@ app.layout = html.Div(children=[
 @app.callback(Output('figure-1', 'figure'),
              [Input('column-options', 'value')])
 def draw_map(mycolumn):
-    mygraphtitle = f'State wise distribution of income from {mycolumn} (in Millions USD) for 2011'
+    mygraphtitle = f'State wise distribution of income from {mycolumn} (in Millions USD) for 2020'
     mycolorscale = 'bluyl' # Note: The error message will list possible color scales.
     mycolorbartitle = "Millions USD"
     
