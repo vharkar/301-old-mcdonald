@@ -18,7 +18,7 @@ mycolorscale = 'ylorrd' # Note: The error message will list possible color scale
 mycolorbartitle = "Millions USD"
 tabtitle = 'US Agriculture'
 sourceurl = 'https://plot.ly/python/choropleth-maps/'
-githublink = 'https://github.com/austinlasseter/dash-map-usa-agriculture'
+githublink = 'https://github.com/vharkar/301-old-mcdonald'
 
 
 ########## Set up the chart
@@ -36,20 +36,23 @@ app.title=tabtitle
 
 app.layout = html.Div(children=[
     html.H1(myheading1),
-    dcc.Dropdown(
-    id='your_input_here',
-        options=[
+    html.Div([
+      html.Div([
+        html.H6('Select a produce:'),
+        dcc.Dropdown(
+            id='column-options',
+            options=[
                 {'label':list_of_columns[0], 'value':list_of_columns[0]},
                 {'label':list_of_columns[1], 'value':list_of_columns[1]},
                 {'label':list_of_columns[2], 'value':list_of_columns[2]},
                 {'label':list_of_columns[3], 'value':list_of_columns[3]},
                 ],
-        value=list_of_columns[0],
-    ),
-    dcc.Graph(
-        id='figure-1',
-        figure=fig
-    ),
+            value=list_of_columns[0],
+        ),
+      ],className='two columns'),
+      html.Div([dcc.Graph(id='figure-1'),
+            ], className='ten columns'),
+    ], className='twelve columns'),
     html.A('Code on Github', href=githublink),
     html.Br(),
     html.A("Data Source", href=sourceurl),
@@ -57,8 +60,7 @@ app.layout = html.Div(children=[
 )
 
 ########## Define Callback
-@app.callback(Output('figure-1', 'figure'),
-              [Input('your_input_here', 'value')])
+@app.callback(Output('figure-1', 'figure'))
 def draw_map(mycolumn):
     fig = go.Figure(data=go.Choropleth(
       locations=df['code'], # Spatial coordinates
