@@ -9,16 +9,13 @@ import pandas as pd
 ########### Define your variables ######
 
 # here's the list of possible columns to choose from.
-list_of_columns =['total exports', 'beef', 'pork', 'poultry',
+list_of_columns =['beef', 'pork', 'poultry',
        'dairy', 'fruits fresh', 'fruits proc', 'total fruits', 'veggies fresh',
-       'veggies proc', 'total veggies', 'corn', 'wheat', 'cotton']
+       'veggies proc', 'total veggies', 'corn', 'wheat', 'cotton', 'total exports']
 
-myheading1 = f"Lesson4 - Draw with plotly"
-mygraphtitle = '2011 US Agriculture Exports by State'
-mycolorscale = 'ylorrd' # Note: The error message will list possible color scales.
-mycolorbartitle = "Millions USD"
-tabtitle = 'US Agriculture'
-sourceurl = 'https://plot.ly/python/choropleth-maps/'
+myheading1 = "Lesson4 - Draw with plotly"
+tabtitle = 'Plotly Map from US Agriculture'
+sourceurl = 'https://plotly.com/python/builtin-colorscales/'
 githublink = 'https://github.com/vharkar/301-old-mcdonald'
 
 
@@ -59,8 +56,8 @@ app.layout = html.Div(children=[
 @app.callback(Output('figure-1', 'figure'),
              [Input('column-options', 'value')])
 def draw_map(mycolumn):
-    mygraphtitle = f'Exports of {mycolumn} in 2011'
-    mycolorscale = 'ylorrd' # Note: The error message will list possible color scales.
+    mygraphtitle = f'State wise distribution of {mycolumn} income in Millions USD in 2011'
+    mycolorscale = 'aggrnyl' # Note: The error message will list possible color scales.
     mycolorbartitle = "Millions USD"
     
     fig = go.Figure(data=go.Choropleth(
