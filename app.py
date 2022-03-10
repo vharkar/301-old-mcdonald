@@ -53,7 +53,7 @@ app.layout = html.Div(children=[
             value=list_of_products[0],
         ),
       ],className='two columns'),
-      html.Div([dcc.Graph(id='figure-1'),
+      html.Div([dcc.Graph(id='figure-1', figure=''),
             ], className='ten columns'),
     ], className='twelve columns'),
     html.A('Code on Github', href=githublink),
