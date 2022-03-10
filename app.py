@@ -1,6 +1,7 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+from dash.dependencies import Input, Output, State
 import plotly.graph_objs as go
 import pandas as pd
 
@@ -81,4 +82,4 @@ def draw_map(mycolumn):
 
 ############ Deploy
 if __name__ == '__main__':
-    app.run_server(debug=TRUE)
+    app.run_server()
