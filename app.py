@@ -60,7 +60,8 @@ app.layout = html.Div(children=[
 )
 
 ########## Define Callback
-@app.callback(Output('figure-1', 'figure'))
+@app.callback(Output('figure-1', 'figure'),
+             [Input('column-options', 'value')])
 def draw_map(mycolumn):
     fig = go.Figure(data=go.Choropleth(
       locations=df['code'], # Spatial coordinates
