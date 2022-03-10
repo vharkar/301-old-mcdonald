@@ -9,9 +9,9 @@ import pandas as pd
 ########### Define your variables ######
 
 # here's the list of possible columns to choose from.
-list_of_columns =['Tree nuts', 'Rice', 'Feeds',
+list_of_columns =['Total exports', 'Tree nuts', 'Rice', 'Feeds',
        'Dairy', 'Fresh fruit', 'Processed fruit', 'Fresh vegetables',
-       'Processed vegetables', 'Soybeans', 'Corn', 'Wheat', 'Cotton', 'Total exports']
+       'Processed vegetables', 'Soybeans', 'Corn', 'Wheat', 'Cotton']
 
 myheading1 = "Lesson4 - Draw with plotly"
 tabtitle = 'Plotly Map from US Agriculture'
