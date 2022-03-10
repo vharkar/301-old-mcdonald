@@ -2,19 +2,17 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
+
 import plotly.graph_objs as go
 import pandas as pd
 
 ########### Define your variables ######
 
 # here's the list of possible columns to choose from.
-list_of_columns =['code', 'state', 'category', 'total exports', 'beef', 'pork', 'poultry',
+list_of_columns =['total exports', 'beef', 'pork', 'poultry',
        'dairy', 'fruits fresh', 'fruits proc', 'total fruits', 'veggies fresh',
        'veggies proc', 'total veggies', 'corn', 'wheat', 'cotton']
-list_of_products =['code', 'state', 'category', 'total exports', 'beef', 'pork', 'poultry',
-       'dairy', 'fruits fresh', 'fruits proc', 'total fruits', 'veggies fresh',
-       'veggies proc', 'total veggies', 'corn', 'wheat', 'cotton']
-mycolumn='corn'
+
 myheading1 = f"Lesson4 - Draw with plotly"
 mygraphtitle = '2011 US Agriculture Exports by State'
 mycolorscale = 'ylorrd' # Note: The error message will list possible color scales.
@@ -44,13 +42,8 @@ app.layout = html.Div(children=[
         html.H6('Select a produce:'),
         dcc.Dropdown(
             id='column-options',
-            options=[
-                {'label':list_of_columns[0], 'value':list_of_products[0]},
-                {'label':list_of_columns[1], 'value':list_of_products[1]},
-                {'label':list_of_columns[2], 'value':list_of_products[2]},
-                {'label':list_of_columns[3], 'value':list_of_products[3]},
-                ],
-            value=list_of_products[0],
+            options=[{'label':i, 'value':i} for i in list_of_columns],
+            value=list_of_columns[0],
         ),
       ],className='two columns'),
       html.Div([dcc.Graph(id='figure-1', figure=''),
